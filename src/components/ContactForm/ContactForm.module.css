@@ -1,0 +1,72 @@
+.contactForm {
+    border: 1px solid #242424;
+    border-radius: 4px;
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 360px;
+    margin-bottom: 24px;
+}
+
+.inputBox:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.formLabel {
+    margin-bottom: 4px;
+}
+
+.formInput {
+    border: 1px solid #242424;
+    border-radius: 4px;
+    padding: 10px 10px;
+    width: 320px;
+    outline: none;
+    background-color: transparent;
+
+    font-family: inherit;
+    font-size: inherit;
+    color: #242424;
+
+    transition: border-color 0.25s;
+}
+
+.formInput:hover,
+.formInput:focus-within {
+    border-color: #646cff;
+}
+
+.formInput::placeholder {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+.formError {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: normal;
+    color: #f00;
+}
+
+.formBtn {
+    padding: 14px 20px;
+    margin: 16px auto;
+    border-radius: 8px;
+    border: 1px solid #242424;
+    outline: none;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    color: #fff;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.formBtn:hover,
+.formBtn:focus {
+    border-color: #646cff;
+}

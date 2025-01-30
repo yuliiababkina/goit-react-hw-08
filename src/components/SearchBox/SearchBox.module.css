@@ -1,0 +1,30 @@
+.searchBox {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.searchLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.searchInput {
+    border: 1px solid #242424;
+    border-radius: 4px;
+    padding: 10px 10px;
+    width: 360px;
+    outline: none;
+    background-color: transparent;
+
+    font-family: inherit;
+    font-size: inherit;
+    color: #242424;
+
+    transition: border-color 0.25s;
+}
+
+.searchInput:hover,
+.searchInput:focus-within {
+    border-color: #646cff;
+}
