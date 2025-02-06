@@ -1,9 +1,11 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
-import * as Yup from "yup";
-import s from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+
+import { Formik, Form, Field } from "formik";
+import toast from "react-hot-toast";
+import * as Yup from "yup";
+
+import { addContact } from "../../redux/contacts/operations";
 
 const ContactForm = () => {
     const nameFieldId = useId();
@@ -18,6 +20,9 @@ const ContactForm = () => {
         };
 
         dispatch(addContact(newContact));
+        toast.success("The contact has been successfully added!", {
+            duration: 3000,
+        });
         actions.resetForm();
     };
 
@@ -39,45 +44,41 @@ const ContactForm = () => {
             onSubmit={handleAddContact}
             validationSchema={FormSchema}
         >
-            <Form className={s.contactForm}>
-                <div className={s.inputBox}>
-                    <label htmlFor="nameFieldId" className={s.formLabel}>
-                        Name
-                    </label>
-                    <Field
-                        type="text"
-                        name="name"
-                        id={nameFieldId}
-                        className={s.formInput}
-                        autoComplete="off"
-                    />
-                    <ErrorMessage
-                        name="name"
-                        className={s.formError}
-                        component="span"
-                    />
+            <Form>
+                <div className="flex flex-col gap-4 mb-10">
+                    <div className="indicator">
+                        <span className="indicator-item badge">Required</span>
+                        <Field
+                            name="name"
+                            type="text"
+                            className="input input-bordered input-primary w-3xs md:w-sm max-w-md mb-1"
+                            placeholder="Name"
+                            id={nameFieldId}
+                            autoComplete="off"
+                            required
+                        />
+                    </div>
+                    <div className="indicator">
+                        <span className="indicator-item badge">Required</span>
+                        <Field
+                            type="tel"
+                            name="number"
+                            id={numberFieldId}
+                            className="input input-bordered input-primary w-3xs md:w-sm max-w-md mb-1"
+                            placeholder="Number"
+                            autoComplete="off"
+                            required
+                        />
+                    </div>
                 </div>
-                <div className={s.inputBox}>
-                    <label htmlFor="numberFieldId" className={s.formLabel}>
-                        Number
-                    </label>
-                    <Field
-                        type="tel"
-                        name="number"
-                        placeholder="000-00-00"
-                        id={numberFieldId}
-                        className={s.formInput}
-                        autoComplete="off"
-                    />
-                    <ErrorMessage
-                        name="number"
-                        className={s.formError}
-                        component="span"
-                    />
+                <div className="form-control">
+                    <button
+                        type="submit"
+                        className="btn btn-primary w-3xs md:w-sm max-w-md"
+                    >
+                        Add contact
+                    </button>
                 </div>
-                <button type="submit" className={s.formBtn}>
-                    Add contact
-                </button>
             </Form>
         </Formik>
     );
