@@ -10,11 +10,6 @@ export const UserMenu = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        dispatch(logout());
-        navigate("/");
-    };
-
     return (
         <div className="flex items-center">
             {isLoggedIn && (
@@ -25,7 +20,11 @@ export const UserMenu = () => {
             <button
                 className="btn btn-outline btn-primary text-md"
                 type="button"
-                onClick={handleLogout}
+                onClick={() =>
+                    dispatch(logout())
+                        .unwrap()
+                        .then(() => navigate("/"))
+                }
             >
                 Logout
             </button>
