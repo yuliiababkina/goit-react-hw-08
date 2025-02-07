@@ -11,5 +11,5 @@ export const PrivateRoute = ({ children }) => {
     const isRefreshing = useSelector(selectIsRefreshing);
     const shouldRedirect = !isLoggedIn && !isRefreshing;
 
-    return shouldRedirect ? <Navigate to="/" /> : children;
+    return shouldRedirect ? <Navigate to="/login" /> : children;
 };

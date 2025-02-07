@@ -27,6 +27,11 @@ export const ContactEditModal = ({ isOpen, onClose, contact }) => {
             .required("Required"),
     });
 
+    const initialValues = {
+        name: contact.name || "",
+        number: contact.number || "",
+    };
+
     const handleEditContact = (values) => {
         const { name, number } = values;
         dispatch(editContact({ id: contact.id, name, number }));
@@ -48,7 +53,7 @@ export const ContactEditModal = ({ isOpen, onClose, contact }) => {
             <div className="card bg-neutral text-neutral-content w-2xs md:w-lg justify-center items-center pt-10">
                 <div className="card-body justify-center items-center text-center">
                     <Formik
-                        initialValues={{ name: "", number: "" }}
+                        initialValues={initialValues}
                         onSubmit={handleEditContact}
                         validationSchema={FormSchema}
                     >
